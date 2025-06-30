@@ -1,0 +1,17 @@
+.ac-container {
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: 0.5rem;
+    width: 5rem;
+}
+
+.ac-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

@@ -1,0 +1,19 @@
+.vitality-grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    font-size: 0.5rem;
+    height: 100%;
+}
+
+.vitality-main,
+.vitality-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.vitality-main {
+    grid-row: 1 / span 2;
+    background: orange;
+}

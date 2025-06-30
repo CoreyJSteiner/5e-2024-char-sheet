@@ -1,0 +1,39 @@
+.tab-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-header {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-button {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em;
+    right: 2rem;
+    background: none;
+    border: 1px solid #6189d9;
+    border-radius: 0.5em 0em 0em 0.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    z-index: 0;
+}
+
+.tab-button:hover {
+    background-color: #6189d9;
+}
+
+.tab-button.active {
+    font-weight: bold;
+}
+
+.tab-content {
+    z-index: 1;
+}

@@ -1,0 +1,46 @@
+.input-heading-display-container {
+    position: relative;
+    background: red;
+    border: 1px solid black;
+    width: 100%;
+    /* height: 6em; */
+    height: 100%;
+}
+
+.input-heading-display {
+    all: unset;
+    background-color: blueviolet;
+    width: 100%;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.input-heading-editable {
+    border: 1px solid white;
+}
+
+.input-heading-size-h1 {
+    font-size: 4em;
+}
+
+.input-heading-size-h2 {
+    font-size: 3em;
+}
+
+.input-heading-size-h3 {
+    font-size: 2em;
+}
+
+.input-heading-size-h4 {
+    font-size: 1em;
+}
+
+.input-heading-edit-button {
+    all: unset;
+    position: absolute;
+    font-size: 4em;
+    top: 50;
+    right: 0;
+}
