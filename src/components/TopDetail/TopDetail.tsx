@@ -6,7 +6,7 @@ import Vitality from '../Vitality'
 
 const TopDetail: React.FC = () => {
     return (
-        <div className="top-detail-container">
+        <div className="top-detail-grid">
             <NameClassSpeciesDetail />
             <LvlXpDetail />
             <AcDetail />

@@ -1,0 +1,71 @@
+.settings-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    font-size: 0.5em;
+    z-index: 999;
+}
+
+.settings-button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    width: fit-content;
+}
+
+.settings-button:hover {
+    color: rgb(176, 207, 219);
+    border: none;
+}
+
+.settings-button:active {
+    border: none;
+    transform: scale(95%);
+}
+
+.settings-close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 2.5em;
+    color: rgb(91, 91, 91);
+}
+
+.settings-modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    color: black;
+    font: 1em;
+    padding: 3em;
+    transform: translate(-50%, -50%);
+}
+
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 2em;
+    margin: 0;
+}
+
+.settings-list-item {
+    font-size: 2em;
+}
