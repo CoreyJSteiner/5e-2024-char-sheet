@@ -5,9 +5,10 @@ type InputHeadingProps = {
     className?: string
     propTextValue?: string
     headingSize?: string
+    onUpdate?: (newValue: string) => void
 }
 
-const InputHeading: React.FC<InputHeadingProps> = ({ className, propTextValue, headingSize }) => {
+const InputHeading: React.FC<InputHeadingProps> = ({ className, propTextValue, headingSize, onUpdate }) => {
     const [textvalue, setTextValue] = useState<string>('')
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
@@ -16,6 +17,9 @@ const InputHeading: React.FC<InputHeadingProps> = ({ className, propTextValue, h
     }, [propTextValue])
 
     const toggleEditHandler = () => {
+        if (isEditing && onUpdate) {
+            onUpdate(textvalue)
+        }
         setIsEditing(prevVal => !prevVal)
     }
 
