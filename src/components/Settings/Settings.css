@@ -69,3 +69,12 @@
 .settings-list-item {
     font-size: 2em;
 }
+
+.settings-list-item:hover {
+    cursor: pointer;
+    transform: scale(105%);
+}
+
+.settings-list-item:active {
+    transform: scale(100%);
+}
