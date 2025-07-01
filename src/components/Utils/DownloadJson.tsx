@@ -16,7 +16,7 @@ export const useDownloadJson = () => {
             const blob = new Blob([jsonString], { type: 'application/json' })
             const saveName = `${fileName}_${new Date().toISOString()}`.toLowerCase().replace(/[\s-]/g, '_')
 
-            saveAs(blob, saveName)
+            saveAs(blob, saveName + '.json')
         },
         []
     );

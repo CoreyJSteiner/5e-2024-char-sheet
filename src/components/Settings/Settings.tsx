@@ -1,24 +1,39 @@
 import { useCharSheetContext } from '../CharSheetContext'
-import { useDownloadJson } from '../Utils/DownloadJSON'
+import { CharSheetSchema } from '../../schema/CharSheetImportSchema'
+import { useDownloadJson } from '../Utils/DownloadJson'
+import { useImportJson } from '../Utils/UploadJson'
 import './Settings.css'
 import { useState } from 'react'
 
 
 const Settings: React.FC = () => {
     const [displayModal, setDisplayModal] = useState<boolean>(false)
-    const { charSheet } = useCharSheetContext()
+    const { charSheet, updateCharSheet } = useCharSheetContext()
     const downloadJson = useDownloadJson()
+    const importJson = useImportJson()
 
     const toggleModalDisplay = () => {
         setDisplayModal(prev => !prev)
     }
 
     const handleImport = () => {
-        console.log('import 1')
+        importJson({
+            onSuccess: (data) => {
+                console.log('Imported data:', data)
+                try {
+                    const parsedData = CharSheetSchema.parse(data)
+                    updateCharSheet(parsedData)
+                } catch (error) {
+                    console.error("Validation failed:", error)
+                }
+            },
+            onError: (error) => console.error('Import failed:', error.message)
+        })
+
+        setDisplayModal(false)
     }
 
     const handleExport = () => {
-        console.dir(charSheet)
         downloadJson(charSheet, { fileName: charSheet.name || Date.now().toString() })
     }
 
