@@ -11,11 +11,15 @@ type StatSkillsProps = {
 const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
     const { charSheet, updateCharSheet } = useCharSheetContext()
 
-    const updateStatField = (field: 'value' | 'modifier') => (input: string) => {
+    const updateStatField = (field: 'score' | 'modifier' | 'save') => (input: string) => {
         const updated = updateNestedValue(charSheet, ['stats', statName, field], input)
         updateCharSheet(updated)
-
     }
+
+    // const updateSkillField = (field: string) => (input: string) => {
+    //     const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field], input)
+    //     updateCharSheet(updated)
+    // }
 
     return (
         <div className='stat-grid'>
@@ -23,9 +27,9 @@ const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
                 <p>{statName}</p>
                 <InputHeading
                     className='stat-score'
-                    propTextValue={charSheet.stats ? charSheet.stats[statName]?.value : ''}
+                    propTextValue={charSheet.stats ? charSheet.stats[statName]?.score : ''}
                     headingSize="h1"
-                    onUpdate={updateStatField('value')}
+                    onUpdate={updateStatField('score')}
                 />
                 <InputHeading
                     className='stat-mod'
@@ -33,8 +37,12 @@ const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
                     headingSize="h1"
                     onUpdate={updateStatField('modifier')}
                 />
-                {/* <InputHeading className='stat-score' propTextValue={charSheet[statName]} headingSize="h2" /> */}
-                {/* <InputHeading className='stat-save' propTextValue={charSheet[statName]} headingSize="h4" /> */}
+                <InputHeading
+                    className='stat-save'
+                    propTextValue={charSheet.stats ? charSheet.stats[statName]?.save : ''}
+                    headingSize="h4"
+                    onUpdate={updateStatField('save')}
+                />
                 {/* <InputHeading className='stat-skill' propTextValue={charSheet[statName]} headingSize="h4" /> */}
             </div>
         </div>

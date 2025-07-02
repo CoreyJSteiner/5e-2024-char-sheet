@@ -24,7 +24,7 @@ function App() {
     currentHitDice: 5,
     stats: {
       'STR': {
-        value: 8
+        score: 8
       }
     }
   })

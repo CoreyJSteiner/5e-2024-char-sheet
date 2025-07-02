@@ -9,7 +9,7 @@ export const zFlexibleNumber = () =>
         return val
     }, z.number())
 
-export const StatTypesSchema = z.union([
+export const StatTypesUnion = z.union([
     z.literal("STR"),
     z.literal("DEX"),
     z.literal("CON"),
@@ -18,9 +18,16 @@ export const StatTypesSchema = z.union([
     z.literal("CHA"),
 ])
 
-export const StatSchema = z.object({
-    value: zFlexibleNumber().optional(),
+export const SkillSchema = z.object({
     modifier: zFlexibleNumber().optional(),
+    prof: z.boolean().optional(),
+})
+
+export const StatSchema = z.object({
+    score: zFlexibleNumber().optional(),
+    modifier: zFlexibleNumber().optional(),
+    save: zFlexibleNumber().optional(),
+    skills: z.record(z.string(), SkillSchema).optional()
 })
 
 export const CharSheetSchema = z.object({
@@ -40,5 +47,5 @@ export const CharSheetSchema = z.object({
     currentHitDice: zFlexibleNumber().optional(),
     deathSaveFail: zFlexibleNumber().optional(),
     deathSaveSuccess: zFlexibleNumber().optional(),
-    stats: z.record(StatTypesSchema, StatSchema).optional()
+    stats: z.record(StatTypesUnion, StatSchema).optional()
 })
