@@ -1,5 +1,5 @@
 import { useCharSheetContext } from '../CharSheetContext'
-import { CharSheetSchema } from '../../schema/CharSheetImportSchema'
+import { CharSheetSchema } from '../../schema/CharSheetSchema'
 import { useDownloadJson } from '../Utils/DownloadJson'
 import { useImportJson } from '../Utils/UploadJson'
 import './Settings.css'

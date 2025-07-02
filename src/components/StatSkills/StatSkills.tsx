@@ -6,10 +6,11 @@ import { updateNestedValue } from '../Utils/Helpers'
 import { useEffect, useState } from 'react'
 
 type StatSkillsProps = {
+    className?: string
     statName: StatTypes
 }
 
-const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
+const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
     const { charSheet, updateCharSheet } = useCharSheetContext()
     const [skills, setSkills] = useState<Record<string, Skill>>({})
 
@@ -25,27 +26,29 @@ const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
         updateCharSheet(updated)
     }
 
-    // const updateSkillField = (field: string) => (input: string) => {
-    //     const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field], input)
-    //     updateCharSheet(updated)
-    // }
+    const updateSkillField = (field: string) => (input: string) => {
+        const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field], input)
+        updateCharSheet(updated)
+    }
 
     return (
-        <div className='stat-grid'>
+        <div className={`stat-container ${className}`}>
             <div className='stat-parent'>
                 <p>{statName}</p>
-                <InputHeading
-                    className='stat-score'
-                    propTextValue={charSheet.stats ? charSheet.stats[statName]?.score : ''}
-                    headingSize="h1"
-                    onUpdate={updateStatField('score')}
-                />
-                <InputHeading
-                    className='stat-mod'
-                    propTextValue={charSheet.stats ? charSheet.stats[statName]?.modifier : ''}
-                    headingSize="h1"
-                    onUpdate={updateStatField('modifier')}
-                />
+                <div className='stat-main'>
+                    <InputHeading
+                        className='stat-mod'
+                        propTextValue={charSheet.stats ? charSheet.stats[statName]?.modifier : ''}
+                        headingSize="h1"
+                        onUpdate={updateStatField('modifier')}
+                    />
+                    <InputHeading
+                        className='stat-score'
+                        propTextValue={charSheet.stats ? charSheet.stats[statName]?.score : ''}
+                        headingSize="h1"
+                        onUpdate={updateStatField('score')}
+                    />
+                </div>
                 <InputHeading
                     className='stat-save'
                     propTextValue={charSheet.stats ? charSheet.stats[statName]?.save : ''}
@@ -55,15 +58,17 @@ const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
 
                 {skills && (
                     Object.keys(skills).map((skill: string) => (
-                        <InputHeading
-                            className='stat-skill'
-                            propTextValue={skills[skill].modifier}
-                            headingSize="h4"
-                        // onUpdate={updateStatField('save')}
-                        />
+                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                            <p style={{ padding: 0, margin: 0, width: '14em' }}>{skill}</p>
+                            <InputHeading
+                                className='stat-skill'
+                                propTextValue={skills[skill].modifier}
+                                headingSize="h4"
+                                onUpdate={updateSkillField(skill)}
+                            />
+                        </div>
                     ))
                 )}
-                {/* <InputHeading className='stat-skill' propTextValue={charSheet[statName]} headingSize="h4" /> */}
             </div>
         </div>
     )

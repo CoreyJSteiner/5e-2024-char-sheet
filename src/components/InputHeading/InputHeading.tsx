@@ -18,7 +18,7 @@ const InputHeading: React.FC<InputHeadingProps> = ({
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
     useEffect(() => {
-        setTextValue(prevVal => propTextValue ? propTextValue.toString() : prevVal)
+        setTextValue(prevVal => propTextValue || propTextValue === 0 ? propTextValue.toString() : prevVal)
     }, [propTextValue])
 
     const toggleEditHandler = () => {

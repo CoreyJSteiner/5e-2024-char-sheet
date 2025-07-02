@@ -1,26 +1,29 @@
-.stat-grid {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: repeat(4, auto);
+.stat-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
-    font-size: 0.5rem;
+    height: fit-content;
+    font-size: 0.5em;
 }
 
 .stat-parent {
     background: burlywood;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
     color: black;
-    -ms-grid-row-span: 1;
-    -ms-grid-column-span: 3;
-    z-index: 3;
+}
+
+.stat-main {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    margin: 0.5em 0em;
 }
 
 .stat-mod,
@@ -28,4 +31,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 5em;
+}
+
+.stat-save,
+.stat-skill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
 }

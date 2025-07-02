@@ -8,45 +8,24 @@ type StatsSectionProps = {
 
 const StatsSection: React.FC<StatsSectionProps> = ({ id }) => {
     return (
-        <div id={id} className='stat-section-grid'>
-            <div className='stat-section-parent'>
-                <p>PROF</p>
-                <InputHeading className='stat-section-mod' propTextValue='+3' headingSize="h1" />
+        <div id={id} className='stat-section' >
+            <div id={id} className='stat-section-col'>
+                <div className='stat-section-parent'>
+                    <p className='stat-section-label'>PROF</p>
+                    <InputHeading className='stat-section-value' propTextValue='+3' headingSize="h1" />
+                </div>
+                <StatSkills className='stat-section-parent' statName='STR' />
+                <StatSkills className='stat-section-parent' statName='DEX' />
+                <StatSkills className='stat-section-parent' statName='CON' />
+                <div className='stat-section-parent'>
+                    <p className='stat-section-label'>INSP</p>
+                    <InputHeading className='stat-section-value' propTextValue='☑️' headingSize="h1" />
+                </div>
             </div>
-            <div className='stat-section-parent'>
-                <p>INT</p>
-                <InputHeading className='stat-section-mod' propTextValue='+0' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='10' headingSize="h1" />
-            </div>
-            {/* <div className='stat-section-parent'>
-                <p>STR</p>
-                <InputHeading className='stat-section-mod' propTextValue='-1' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='8' headingSize="h1" />
-            </div> */}
-            <StatSkills statName='STR' />
-            <div className='stat-section-parent'>
-                <p>WIS</p>
-                <InputHeading className='stat-section-mod' propTextValue='-1' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='8' headingSize="h1" />
-            </div>
-            <div className='stat-section-parent'>
-                <p>DEX</p>
-                <InputHeading className='stat-section-mod' propTextValue='+3' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='16' headingSize="h1" />
-            </div>
-            <div className='stat-section-parent'>
-                <p>CHA</p>
-                <InputHeading className='stat-section-mod' propTextValue='+4' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='18' headingSize="h1" />
-            </div>
-            <div className='stat-section-parent'>
-                <p>CON</p>
-                <InputHeading className='stat-section-mod' propTextValue='+2' headingSize="h1" />
-                <InputHeading className='stat-section-score' propTextValue='14' headingSize="h1" />
-            </div>
-            <div className='stat-section-parent'>
-                <p>INSP</p>
-                <InputHeading className='stat-section-mod' propTextValue='☑️' headingSize="h1" />
+            <div id={id} className='stat-section-col'>
+                <StatSkills className='stat-section-parent' statName='INT' />
+                <StatSkills className='stat-section-parent' statName='WIS' />
+                <StatSkills className='stat-section-parent' statName='CHA' />
             </div>
         </div>
     )
