@@ -24,7 +24,10 @@ function App() {
     currentHitDice: 5,
     stats: {
       'STR': {
-        score: 8
+        score: 8,
+        skills: {
+          'Athletics': { modifier: -1 }
+        }
       }
     }
   })

@@ -1,8 +1,9 @@
 import './StatSkills.css'
 import { useCharSheetContext } from '../CharSheetContext'
 import InputHeading from '../InputHeading'
-import { type StatTypes } from '../../schema/CharSheetTypes'
+import { type Skill, type StatTypes } from '../../schema/CharSheetTypes'
 import { updateNestedValue } from '../Utils/Helpers'
+import { useEffect, useState } from 'react'
 
 type StatSkillsProps = {
     statName: StatTypes
@@ -10,6 +11,14 @@ type StatSkillsProps = {
 
 const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
     const { charSheet, updateCharSheet } = useCharSheetContext()
+    const [skills, setSkills] = useState<Record<string, Skill>>({})
+
+    useEffect(() => {
+        const stats = charSheet.stats ? charSheet.stats[statName] : null
+        const skills = stats ? stats.skills : null
+
+        if (skills) setSkills(skills)
+    }, [charSheet, statName])
 
     const updateStatField = (field: 'score' | 'modifier' | 'save') => (input: string) => {
         const updated = updateNestedValue(charSheet, ['stats', statName, field], input)
@@ -43,6 +52,17 @@ const StatSkills: React.FC<StatSkillsProps> = ({ statName }) => {
                     headingSize="h4"
                     onUpdate={updateStatField('save')}
                 />
+
+                {skills && (
+                    Object.keys(skills).map((skill: string) => (
+                        <InputHeading
+                            className='stat-skill'
+                            propTextValue={skills[skill].modifier}
+                            headingSize="h4"
+                        // onUpdate={updateStatField('save')}
+                        />
+                    ))
+                )}
                 {/* <InputHeading className='stat-skill' propTextValue={charSheet[statName]} headingSize="h4" /> */}
             </div>
         </div>
