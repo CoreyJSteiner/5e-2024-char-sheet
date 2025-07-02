@@ -4,7 +4,8 @@ import TabMain from './components/TabMain'
 import TabSpells from './components/TabSpells'
 import { TabController, Tab } from './components/TabController'
 import Settings from './components/Settings/Settings'
-import { CharSheetContext, type CharSheet } from './components/CharSheetContext'
+import { CharSheetContext } from './components/CharSheetContext'
+import type { CharSheet } from './schema/CharSheetTypes'
 import { useState } from 'react'
 
 function App() {
@@ -20,7 +21,12 @@ function App() {
     currentHp: 35,
     maxHitDice: 5,
     sidesHitDice: 8,
-    currentHitDice: 5
+    currentHitDice: 5,
+    stats: {
+      'STR': {
+        value: 8
+      }
+    }
   })
 
   const updateCharSheet = (updates: Partial<CharSheet>) => {

@@ -3,22 +3,27 @@ import './InputHeading.css'
 
 type InputHeadingProps = {
     className?: string
-    propTextValue?: string
+    propTextValue?: string | number
     headingSize?: string
     onUpdate?: (newValue: string) => void
 }
 
-const InputHeading: React.FC<InputHeadingProps> = ({ className, propTextValue, headingSize, onUpdate }) => {
-    const [textvalue, setTextValue] = useState<string>('')
+const InputHeading: React.FC<InputHeadingProps> = ({
+    className,
+    propTextValue,
+    headingSize,
+    onUpdate
+}) => {
+    const [textValue, setTextValue] = useState<string>('')
     const [isEditing, setIsEditing] = useState<boolean>(false)
 
     useEffect(() => {
-        setTextValue(prevVal => propTextValue ? propTextValue : prevVal)
+        setTextValue(prevVal => propTextValue ? propTextValue.toString() : prevVal)
     }, [propTextValue])
 
     const toggleEditHandler = () => {
         if (isEditing && onUpdate) {
-            onUpdate(textvalue)
+            onUpdate(textValue)
         }
         setIsEditing(prevVal => !prevVal)
     }
@@ -47,7 +52,7 @@ const InputHeading: React.FC<InputHeadingProps> = ({ className, propTextValue, h
                 onChange={updateTextVal}
                 onClick={() => !isEditing ? toggleEditHandler() : null}
                 onKeyDown={keyDownHandler}
-                value={textvalue}
+                value={textValue}
                 readOnly={!isEditing}
                 spellCheck='false'
             />

@@ -1,9 +1,11 @@
+import StatsSection from '../StatsSection'
 import './TabMain.css'
 
 const TabMain: React.FC = () => {
     return (
         <div className="tab-main-grid">
-            <div id='stats' className='item'>stats</div>
+            <StatsSection id='stats' />
+            {/* <div id='stats' className='item'>stats</div> */}
             <div id='equip' className='item'>equip</div>
             <div id='extra-deet' className='item'>extra</div>
             <div id='weapon' className='item'>weapon</div>

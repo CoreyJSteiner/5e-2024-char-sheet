@@ -1,8 +1,5 @@
 import { createContext, useContext } from "react"
-import { CharSheetSchema } from "../schema/CharSheetImportSchema"
-import { z } from "zod"
-
-export type CharSheet = z.infer<typeof CharSheetSchema>;
+import type { CharSheet } from "../schema/CharSheetTypes"
 
 export type CharSheetContextType = {
     charSheet: CharSheet,
