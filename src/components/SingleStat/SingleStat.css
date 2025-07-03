@@ -1,33 +1,44 @@
-.stat-section {
+.single-stat {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
     height: 100%;
 }
 
-.stat-section-col {
+.single-stat-col {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 0.3em 0;
     width: 50%;
-    gap: 0.5em;
+    height: 100%;
 }
 
-.stat-section-parent {
+.single-stat-parent {
     display: flex;
-    flex: 1;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border: 1px solid black;
     background: orange;
     padding: 0.5em;
-    /* margin: 0.3em 0; */
+    margin: 0.5em;
     width: 90%;
+    height: 100%;
     font-size: 0.5em;
-    flex: 1 1 0%;
-    min-width: 0;
+}
+
+.single-stat-parent {
     font-weight: bold;
+}
+
+.single-stat-label {
+    margin: 0;
+    padding: 0.25em;
+    height: 1.5em;
+    font-size: 2em;
+}
+
+.single-stat-value {
+    height: 80%;
 }

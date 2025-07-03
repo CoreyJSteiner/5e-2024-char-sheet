@@ -34,7 +34,7 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
     return (
         <div className={`stat-container ${className}`}>
             <div className='stat-parent'>
-                <p>{statName}</p>
+                <p className='stat-section-label'>{statName}</p>
                 <div className='stat-main'>
                     <InputHeading
                         className='stat-mod'
@@ -52,18 +52,18 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
                 <InputHeading
                     className='stat-save'
                     propTextValue={charSheet.stats ? charSheet.stats[statName]?.save : ''}
-                    headingSize="h4"
+                    headingSize="h3"
                     onUpdate={updateStatField('save')}
                 />
 
                 {skills && (
                     Object.keys(skills).map((skill: string) => (
-                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                            <p style={{ padding: 0, margin: 0, width: '14em' }}>{skill}</p>
+                        <div key={crypto.randomUUID()} className='stat-skill-container'>
+                            <p className="stat-skill-label">{skill}</p>
                             <InputHeading
                                 className='stat-skill'
                                 propTextValue={skills[skill].modifier}
-                                headingSize="h4"
+                                headingSize="h3"
                                 onUpdate={updateSkillField(skill)}
                             />
                         </div>
