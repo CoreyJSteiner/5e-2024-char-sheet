@@ -49,5 +49,9 @@ export const CharSheetSchema = z.object({
     deathSaveSuccess: zFlexibleNumber().optional(),
     proficiency: zFlexibleNumber().optional(),
     heroicInsp: zFlexibleNumber().optional(),
+    initiative: zFlexibleNumber().optional(),
+    speed: zFlexibleNumber().optional(),
+    size: z.string().optional(),
+    passivePerception: zFlexibleNumber().optional(),
     stats: z.record(StatTypesUnion, StatSchema).optional()
 })

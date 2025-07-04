@@ -22,8 +22,12 @@ function App() {
     "maxHitDice": 5,
     "sidesHitDice": 8,
     "currentHitDice": 5,
-    "proficiency": +4,
+    "proficiency": +3,
     "heroicInsp": 1,
+    "initiative": +3,
+    "speed": 30,
+    "size": "med",
+    "passivePerception": 9,
     "stats": {
       "STR": {
         "score": 8,

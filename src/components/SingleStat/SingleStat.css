@@ -1,21 +1,5 @@
 .single-stat {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 100%;
-}
-
-.single-stat-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-}
-
-.single-stat-parent {
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;

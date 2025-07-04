@@ -5,6 +5,7 @@ type InputHeadingProps = {
     className?: string
     propTextValue?: string | number
     headingSize?: string
+    inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']
     onUpdate?: (newValue: string) => void
 }
 
@@ -12,6 +13,7 @@ const InputHeading: React.FC<InputHeadingProps> = ({
     className,
     propTextValue,
     headingSize,
+    inputMode,
     onUpdate
 }) => {
     const [textValue, setTextValue] = useState<string>('')
@@ -55,6 +57,7 @@ const InputHeading: React.FC<InputHeadingProps> = ({
                 value={textValue}
                 readOnly={!isEditing}
                 spellCheck='false'
+                inputMode={inputMode ? inputMode : 'text'}
             />
             {isEditing && (
                 <button className='input-heading-edit-button' onClick={toggleEditHandler}>✅</button>

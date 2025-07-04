@@ -10,11 +10,11 @@ const StatsSection: React.FC<StatsSectionProps> = ({ id }) => {
     return (
         <div id={id} className='stat-section' >
             <div className='stat-section-col'>
-                <SingleStat className='stat-section-parent' fieldName='proficiency' />
+                <SingleStat className='stat-section-parent' fieldName='proficiency' inputMode='numeric' />
                 <StatSkills className='stat-section-parent' statName='STR' />
                 <StatSkills className='stat-section-parent' statName='DEX' />
                 <StatSkills className='stat-section-parent' statName='CON' />
-                <SingleStat className='stat-section-parent' fieldName='heroicInsp' />
+                <SingleStat className='stat-section-parent' fieldName='heroicInsp' inputMode='numeric' />
             </div>
             <div className='stat-section-col'>
                 <StatSkills className='stat-section-parent' statName='INT' />
