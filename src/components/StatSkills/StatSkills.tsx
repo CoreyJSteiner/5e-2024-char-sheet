@@ -18,6 +18,9 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
         const stats = charSheet.stats ? charSheet.stats[statName] : null
         const skills = stats ? stats.skills : null
 
+        console.log(skills);
+
+
         if (skills) setSkills(skills)
     }, [charSheet, statName])
 
@@ -27,7 +30,9 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
     }
 
     const updateSkillField = (field: string) => (input: string) => {
-        const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field], input)
+        const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field, 'modifier'], input)
+        console.log(updated);
+
         updateCharSheet(updated)
     }
 
