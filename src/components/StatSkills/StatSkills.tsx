@@ -37,8 +37,17 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
         updateCharSheet(updated)
     }
 
-    const updateSkillFieldProf = (field: string) => (profInput: boolean) => {
-        const updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field, 'proficient'], profInput)
+    const updateSkillFieldProf = (field: string) => (profInput: boolean, expertiseInput?: boolean) => {
+        let updated = updateNestedValue(charSheet, ['stats', statName, 'skills', field, 'proficient'], profInput)
+        if (expertiseInput !== undefined) {
+            console.log('exp');
+
+            updated = updateNestedValue(
+                updated,
+                ['stats', statName, 'skills', field, 'expertise'],
+                expertiseInput
+            )
+        }
         console.log(updated);
 
         updateCharSheet(updated)
@@ -75,7 +84,7 @@ const StatSkills: React.FC<StatSkillsProps> = ({ className, statName }) => {
                             <RadioToggle
                                 value={skills[skill].proficient}
                                 emphasis={skills[skill].expertise}
-                                useEmphasis={false}
+                                useEmphasis={true}
                                 onUpdate={updateSkillFieldProf(skill)}
                             />
                             <InputHeading

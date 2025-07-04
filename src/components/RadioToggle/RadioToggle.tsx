@@ -5,7 +5,7 @@ type RadioToggleProps = {
     value?: boolean
     emphasis?: boolean
     useEmphasis?: boolean
-    onUpdate?: (newValue: boolean) => void
+    onUpdate?: (profBool: boolean, expertBool?: boolean) => void
 }
 
 const RadioToggle: React.FC<RadioToggleProps> = ({
@@ -21,11 +21,11 @@ const RadioToggle: React.FC<RadioToggleProps> = ({
             onUpdate(!value)
         } else {
             if (!value) {
-                onUpdate(true)
+                onUpdate(true, false)
             } else if (value && !emphasis) {
-                onUpdate(true)
+                onUpdate(true, true)
             } else {
-                onUpdate(false)
+                onUpdate(false, false)
             }
         }
     }
