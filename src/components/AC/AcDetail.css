@@ -1,12 +1,13 @@
 .ac-container {
-    background: green;
+    background: rgb(0, 105, 128);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     padding: 1em;
     font-size: 0.5em;
-    width: 5em;
+    width: 100%;
 }
 
 .ac-heading {

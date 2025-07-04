@@ -1,8 +1,11 @@
 .name-class-species-grid {
     display: grid;
+    background: white;
     grid-template-columns: auto auto;
     font-size: 0.5em;
     height: 100%;
+    box-sizing: border-box;
+    padding: 1em;
 }
 
 .name-class-species-main,

@@ -3,7 +3,25 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-size: 0.8rem;
 }
+
+@media (max-width: 1279px) {
+  #root {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 920px) {
+  #root {
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 800px) {
+  /* change to inner tabbed view */
+}
+
 
 .app-container {
   position: relative;
