@@ -20,7 +20,8 @@ export const StatTypesUnion = z.union([
 
 export const SkillSchema = z.object({
     modifier: zFlexibleNumber().optional(),
-    prof: z.boolean().optional(),
+    proficient: z.boolean().optional(),
+    expertise: z.boolean().optional(),
 })
 
 export const StatSchema = z.object({

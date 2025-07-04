@@ -1,0 +1,14 @@
+.radio-toggle {
+    font-size: 2em;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    outline: none;
+    margin: 0.25em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
