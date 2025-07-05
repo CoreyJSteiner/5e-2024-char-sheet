@@ -31,6 +31,21 @@ function App() {
     "weaponsAndDamage": [
       { name: 'Whip', atkBonusOrDc: "+7", damageAndType: "1d4 + 4 SLSH", notes: "Swap DMG-TYPE for NEC || RAD || PSY, 10ft Reach" },
       { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
+      { name: 'Eldritch Blast' },
       { name: 'Unarmed Strike' }
     ],
     "stats": {
