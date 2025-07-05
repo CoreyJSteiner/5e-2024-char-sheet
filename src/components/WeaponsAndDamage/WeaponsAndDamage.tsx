@@ -38,7 +38,6 @@ const WeaponsAndDamage: React.FC<WeaponsAndDamageProps> = ({ id, className }) =>
     )
     const weapons = charSheet.weaponsAndDamage ?? []
 
-    // ⚠️ Run this BEFORE rendering anything
     weapons.forEach((_, idx) => {
         if (!idMapRef.current.has(idx)) {
             idMapRef.current.set(idx, crypto.randomUUID())
@@ -49,7 +48,6 @@ const WeaponsAndDamage: React.FC<WeaponsAndDamageProps> = ({ id, className }) =>
         setActiveId(event.active.id as string)
     }
 
-    // ✅ Handle drag end with ID map lookups
     const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event
         setActiveId(null)
@@ -92,7 +90,7 @@ const WeaponsAndDamage: React.FC<WeaponsAndDamageProps> = ({ id, className }) =>
 
                             if (!stableId) {
                                 console.warn(`Missing stable ID for weapon at index ${idx}`)
-                                return null // Skip rendering to avoid broken key
+                                return null
                             }
 
                             return (
