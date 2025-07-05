@@ -1,5 +1,6 @@
 import ExtraDetail from '../ExtraDetail'
 import StatsSection from '../StatsSection'
+import WeaponsAndDamage from '../WeaponsAndDamage/WeaponsAndDamage'
 import './TabMain.css'
 
 const TabMain: React.FC = () => {
@@ -10,7 +11,8 @@ const TabMain: React.FC = () => {
             <div id='equip' className='item'>equip</div>
             {/* <div id='extra-deet' className='item'>extra</div> */}
             <ExtraDetail id='extra-deet' />
-            <div id='weapon' className='item'>weapon</div>
+            {/* <div id='weapon' className='item'>weapon</div> */}
+            <WeaponsAndDamage id='weapon' className='item' />
             <div id='class-feat' className='item'>class feat</div>
             <div id='feat' className='item'>feat</div>
         </div >

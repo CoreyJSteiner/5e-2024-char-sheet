@@ -31,6 +31,13 @@ export const StatSchema = z.object({
     skills: z.record(z.string(), SkillSchema).optional()
 })
 
+export const DamageLineSchema = z.object({
+    name: z.string().optional(),
+    atkBonusOrDc: z.string().optional(),
+    damageAndType: z.string().optional(),
+    notes: z.string().optional()
+})
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -54,5 +61,6 @@ export const CharSheetSchema = z.object({
     speed: zFlexibleNumber().optional(),
     size: z.string().optional(),
     passivePerception: zFlexibleNumber().optional(),
-    stats: z.record(StatTypesUnion, StatSchema).optional()
+    stats: z.record(StatTypesUnion, StatSchema).optional(),
+    weaponsAndDamage: z.array(DamageLineSchema).optional()
 })

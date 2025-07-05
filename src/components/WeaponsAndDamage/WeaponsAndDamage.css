@@ -1,0 +1,24 @@
+.damage-section {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 0.2em;
+    font-size: 0.8em;
+    gap: 0.2em
+        /* margin: 0.2em; */
+}
+
+.damage-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 2em;
+    background-color: rgb(42, 126, 165);
+    gap: 0.2em;
+}
+
+.damage-line-notes {
+    font-size: 0.8em;
+}
