@@ -2,23 +2,24 @@ import { useCharSheetContext } from '../CharSheetContext'
 import SortableDamageLine from '../SortableDamageLine/SortableDamageLine'
 import { updateNestedValue } from '../Utils/Helpers'
 import './WeaponsAndDamage.css'
+
 import {
     DndContext,
     closestCenter,
     PointerSensor,
     useSensor,
     useSensors,
-    type UniqueIdentifier,
-    type DragEndEvent
+    type DragEndEvent,
+    type DragStartEvent
 } from '@dnd-kit/core'
+
 import {
     arrayMove,
     SortableContext,
-    // useSortable,
     verticalListSortingStrategy
 } from '@dnd-kit/sortable'
-// import { CSS } from '@dnd-kit/utilities'
 
+import { useRef, useState } from 'react'
 
 type WeaponsAndDamageProps = {
     id?: string
@@ -27,104 +28,87 @@ type WeaponsAndDamageProps = {
 
 const WeaponsAndDamage: React.FC<WeaponsAndDamageProps> = ({ id, className }) => {
     const { charSheet, updateCharSheet } = useCharSheetContext()
+    const [activeId, setActiveId] = useState<string | null>(null)
+    const idMapRef = useRef<Map<number, string>>(new Map())
 
     const sensors = useSensors(
         useSensor(PointerSensor, {
             activationConstraint: { distance: 5 }
         })
     )
+    const weapons = charSheet.weaponsAndDamage ?? []
 
+    // ⚠️ Run this BEFORE rendering anything
+    weapons.forEach((_, idx) => {
+        if (!idMapRef.current.has(idx)) {
+            idMapRef.current.set(idx, crypto.randomUUID())
+        }
+    })
+
+    const handleDragStart = (event: DragStartEvent) => {
+        setActiveId(event.active.id as string)
+    }
+
+    // ✅ Handle drag end with ID map lookups
     const handleDragEnd = (event: DragEndEvent) => {
-        if (!charSheet.weaponsAndDamage) return
         const { active, over } = event
+        setActiveId(null)
+        if (!over || !charSheet.weaponsAndDamage) return
 
-        if (active.id !== over?.id) {
-            const oldIndex = charSheet.weaponsAndDamage.findIndex(item => item.name === active.id)
-            const newIndex = charSheet.weaponsAndDamage.findIndex(item => item.name === over?.id)
+        const entries = Array.from(idMapRef.current.entries())
+        const oldIndex = entries.find(([, id]) => id === active.id)?.[0]
+        const newIndex = entries.find(([, id]) => id === over.id)?.[0]
 
+        if (
+            oldIndex != null &&
+            newIndex != null &&
+            oldIndex !== newIndex
+        ) {
             const newOrder = arrayMove(charSheet.weaponsAndDamage, oldIndex, newIndex)
-
             updateCharSheet({ weaponsAndDamage: newOrder })
         }
     }
 
-
     const updateDamageField = (field: string, idx: number) => (input: string) => {
         const updated = updateNestedValue(charSheet, ['weaponsAndDamage', idx, field], input)
-        console.log(updated);
-
         updateCharSheet(updated)
     }
 
     return (
-        // <div id={id} className={`damage-section-container ${className}`}>
-        //     <div className={`damage-section`}>
-        //         {charSheet.weaponsAndDamage && (
-        //             charSheet.weaponsAndDamage.map((damageLine, idx) => (
-        //                 <div key={idx} className='damage-line'>
-        //                     <InputHeading
-        //                         className='damage-line-name'
-        //                         propTextValue={damageLine.name}
-        //                         inputMode='text'
-        //                         headingSize='h4'
-        //                         onUpdate={updateDamageField('name', idx)}
-        //                     />
-        //                     <InputHeading
-        //                         className='damage-line-atk-dc'
-        //                         propTextValue={damageLine.atkBonusOrDc}
-        //                         inputMode='text'
-        //                         headingSize='h4'
-        //                         onUpdate={updateDamageField('atkBonusOrDc', idx)}
-        //                     />
-        //                     <InputHeading
-        //                         className='damage-line-dmg-type'
-        //                         propTextValue={damageLine.damageAndType}
-        //                         inputMode='text'
-        //                         headingSize='h4'
-        //                         onUpdate={updateDamageField('damageAndType', idx)}
-        //                     />
-        //                     <InputHeading
-        //                         className='damage-line-notes'
-        //                         propTextValue={damageLine.notes}
-        //                         inputMode='text'
-        //                         headingSize='h4'
-        //                         onUpdate={updateDamageField('notes', idx)}
-        //                     />
-        //                 </div>
-        //             ))
-        //         )}
-        //     </div>
-        // </div>
-
         <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
+            onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
         >
-
             <SortableContext
-                items={charSheet.weaponsAndDamage?.map((item) => item.name as UniqueIdentifier) || []}
+                items={weapons.map((_, idx) => idMapRef.current.get(idx)!)}
                 strategy={verticalListSortingStrategy}
             >
-                <div
-                    id={id}
-                    className={`damage-section-container ${className}`}
-                >
-                    {charSheet.weaponsAndDamage && (
-                        charSheet.weaponsAndDamage.map((line, idx) => (
+                <div id={id} className={`damage-section-container ${className}`}>
+                    {weapons.map((line, idx) => {
+                        const stableId = idMapRef.current.get(idx)
+
+                        if (!stableId) {
+                            console.warn(`Missing stable ID for weapon at index ${idx}`)
+                            return null // Skip rendering to avoid broken key
+                        }
+
+                        return (
                             <SortableDamageLine
-                                key={line.name}
-                                id={line.name || idx.toString()}
+                                key={stableId}
+                                id={stableId}
                                 index={idx}
+                                className='damage-line'
                                 damageLine={line}
                                 updateDamageField={updateDamageField}
+                                activeId={activeId}
                             />
-                        ))
-                    )}
-                </div >
+                        )
+                    })}
+                </div>
             </SortableContext>
-        </DndContext >
-
+        </DndContext>
     )
 }
 
