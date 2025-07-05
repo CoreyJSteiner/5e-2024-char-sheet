@@ -43,25 +43,24 @@ const InputHeading: React.FC<InputHeadingProps> = ({
     return (
         <div className={
             `input-heading-display-container
-             ${isEditing ? ' input-heading-editable' : ''}
+             
              ${className}`}
         >
-            <input className={
-                `input-heading-display
-                 input-heading-size-${headingSize ? headingSize : 'h1'}`
-            }
-                type='text'
-                onChange={updateTextVal}
-                onClick={() => !isEditing ? toggleEditHandler() : null}
-                onKeyDown={keyDownHandler}
-                value={textValue}
-                readOnly={!isEditing}
-                spellCheck='false'
-                inputMode={inputMode ? inputMode : 'text'}
-            />
-            {isEditing && (
-                <button className='input-heading-edit-button' onClick={toggleEditHandler}>✅</button>
-            )}
+            <div className={`input-heading-size input-heading-size-${headingSize ? headingSize : 'h1'}`}>
+                <input className={`input-heading-display ${isEditing ? ' input-heading-editable' : ''}`}
+                    type='text'
+                    onChange={updateTextVal}
+                    onClick={() => !isEditing ? toggleEditHandler() : null}
+                    onKeyDown={keyDownHandler}
+                    value={textValue}
+                    readOnly={!isEditing}
+                    spellCheck='false'
+                    inputMode={inputMode ? inputMode : 'text'}
+                />
+                {isEditing && (
+                    <button className='input-heading-edit-button' onClick={toggleEditHandler}>✅</button>
+                )}
+            </div>
         </div >
     )
 }
