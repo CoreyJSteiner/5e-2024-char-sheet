@@ -42,6 +42,38 @@ function App() {
       { name: 'Eldritch Blast' },
       { name: 'Unarmed Strike' }
     ],
+    "spellList": [
+      {
+        spellLevel: 0,
+        name: 'Eldritch Blast',
+        castingTime: '1A',
+        range: '120ft',
+        notes: 'V/S',
+        concentrationReq: false,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 0,
+        name: 'Toll of the Dead',
+        castingTime: '1A',
+        range: '60ft',
+        notes: 'V/S',
+        concentrationReq: false,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 0,
+        name: 'Minor Illusion',
+        castingTime: '1A',
+        range: '30ft',
+        notes: 'S/M, 5ft Cube',
+        concentrationReq: false,
+        materialReq: false,
+        ritualAllow: false
+      },
+    ],
     "stats": {
       "STR": {
         "score": 8,

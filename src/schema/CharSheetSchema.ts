@@ -38,6 +38,17 @@ export const DamageLineSchema = z.object({
     notes: z.string().optional()
 })
 
+export const SpellLineSchema = z.object({
+    spellLevel: zFlexibleNumber().optional(),
+    name: z.string().optional(),
+    castingTime: z.string().optional(),
+    range: z.string().optional(),
+    concentrationReq: z.boolean().optional(),
+    materialReq: z.boolean().optional(),
+    ritualAllow: z.boolean().optional(),
+    notes: z.string().optional()
+})
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -62,5 +73,6 @@ export const CharSheetSchema = z.object({
     size: z.string().optional(),
     passivePerception: zFlexibleNumber().optional(),
     stats: z.record(StatTypesUnion, StatSchema).optional(),
-    weaponsAndDamage: z.array(DamageLineSchema).optional()
+    weaponsAndDamage: z.array(DamageLineSchema).optional(),
+    spellList: z.array(SpellLineSchema).optional()
 })
