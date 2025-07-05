@@ -1,6 +1,11 @@
 .damage-section-container {
     box-sizing: border-box;
     padding: 0.2em;
+    z-index: auto;
+    overflow: visible;
+}
+
+.damage-section {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -8,7 +13,6 @@
     font-size: 0.8em;
     gap: 0.2em;
     overflow-y: scroll;
-    z-index: auto;
 }
 
 .damage-line {

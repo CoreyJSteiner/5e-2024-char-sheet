@@ -86,26 +86,28 @@ const WeaponsAndDamage: React.FC<WeaponsAndDamageProps> = ({ id, className }) =>
                 strategy={verticalListSortingStrategy}
             >
                 <div id={id} className={`damage-section-container ${className}`}>
-                    {weapons.map((line, idx) => {
-                        const stableId = idMapRef.current.get(idx)
+                    <div className={'damage-section'}>
+                        {weapons.map((line, idx) => {
+                            const stableId = idMapRef.current.get(idx)
 
-                        if (!stableId) {
-                            console.warn(`Missing stable ID for weapon at index ${idx}`)
-                            return null // Skip rendering to avoid broken key
-                        }
+                            if (!stableId) {
+                                console.warn(`Missing stable ID for weapon at index ${idx}`)
+                                return null // Skip rendering to avoid broken key
+                            }
 
-                        return (
-                            <SortableDamageLine
-                                key={stableId}
-                                id={stableId}
-                                index={idx}
-                                className='damage-line'
-                                damageLine={line}
-                                updateDamageField={updateDamageField}
-                                activeId={activeId}
-                            />
-                        )
-                    })}
+                            return (
+                                <SortableDamageLine
+                                    key={stableId}
+                                    id={stableId}
+                                    index={idx}
+                                    className='damage-line'
+                                    damageLine={line}
+                                    updateDamageField={updateDamageField}
+                                    activeId={activeId}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             </SortableContext>
         </DndContext>
