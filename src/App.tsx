@@ -73,6 +73,396 @@ function App() {
         materialReq: false,
         ritualAllow: false
       },
+      {
+        spellLevel: 1,
+        name: 'Mage Armor',
+        castingTime: '1A',
+        range: 'Touch',
+        notes: 'V/S/M, 8hr',
+        concentrationReq: false,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Arms of Hadar',
+        castingTime: '1A',
+        range: 'Self',
+        notes: 'V/S, 10ft Sphere',
+        concentrationReq: false,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
+      {
+        spellLevel: 1,
+        name: 'Hex',
+        castingTime: '1BA',
+        range: '90ft',
+        notes: 'V/S/m, 1hr',
+        concentrationReq: true,
+        materialReq: false,
+        ritualAllow: false
+      },
     ],
     "stats": {
       "STR": {

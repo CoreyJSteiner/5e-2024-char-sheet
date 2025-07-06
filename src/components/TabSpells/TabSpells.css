@@ -1,7 +1,7 @@
 .tab-spell-grid {
     display: grid;
     grid-template-columns: 20% 50% 30%;
-    grid-template-rows: repeat(12, auto);
+    grid-template-rows: repeat(12, 1fr);
     font-size: 1em;
     color: black;
     width: 100%;

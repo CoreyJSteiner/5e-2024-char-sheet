@@ -1,5 +1,5 @@
 import { useCharSheetContext } from '../CharSheetContext'
-import SortableSpellLine from '../SortableSpellLine/SortableDamageLine'
+import SortableSpellLine from '../SortableSpellLine/SortableSpellLine'
 import { updateNestedValue } from '../Utils/Helpers'
 import './SpellList.css'
 
@@ -67,7 +67,7 @@ const SpellList: React.FC<SpellListProps> = ({ id, className }) => {
         }
     }
 
-    const updateSpellField = (field: string, idx: number) => (input: string) => {
+    const updateSpellField = (field: string, idx: number) => (input: string | boolean) => {
         const updated = updateNestedValue(charSheet, ['spellList', idx, field], input)
         updateCharSheet(updated)
     }

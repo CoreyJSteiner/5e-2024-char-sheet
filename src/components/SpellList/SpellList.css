@@ -2,7 +2,8 @@
     box-sizing: border-box;
     padding: 0.2em;
     z-index: auto;
-    overflow: visible;
+    height: 100%;
+    overflow: hidden;
 }
 
 .spell-list-section {

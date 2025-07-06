@@ -10,7 +10,7 @@ const SortableSpellLine: React.FC<{
     className: string
     spellLine: SpellLine
     activeId: string | null
-    updateSpellField: (field: string, idx: number) => (input: string) => void
+    updateSpellField: (field: string, idx: number) => (input: string | boolean) => void
 }> = ({ id, index, className, spellLine, activeId, updateSpellField }) => {
     const {
         attributes,
@@ -68,17 +68,17 @@ const SortableSpellLine: React.FC<{
             <RadioToggle
                 value={spellLine.concentrationReq}
                 useEmphasis={false}
-            // onUpdate={updateSpellField('concentrationReq', index)}
+                onUpdate={updateSpellField('concentrationReq', index)}
             />
             <RadioToggle
                 value={spellLine.materialReq}
                 useEmphasis={false}
-            // onUpdate={updateSpellField('materialReq', index)}
+                onUpdate={updateSpellField('materialReq', index)}
             />
             <RadioToggle
                 value={spellLine.ritualAllow}
                 useEmphasis={false}
-            // onUpdate={updateSpellField('materialReq', index)}
+                onUpdate={updateSpellField('ritualAllow', index)}
             />
             <InputHeading
                 className='spell-line-notes'
