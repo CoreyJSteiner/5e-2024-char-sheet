@@ -42,6 +42,38 @@ function App() {
       { name: 'Eldritch Blast' },
       { name: 'Unarmed Strike' }
     ],
+    "spellSlots": {
+      "1": {
+        "maxSlots": 2,
+        "spentSlots": 1,
+        "slotLevel": 1
+      },
+      "2": {
+        "slotLevel": 2,
+        "maxSlots": 4,
+        "spentSlots": 3
+      },
+      "3": {
+        "slotLevel": 3,
+        "maxSlots": 2,
+        "spentSlots": 0
+      },
+      "4": {
+        "slotLevel": 4,
+        "maxSlots": 3,
+        "spentSlots": 2
+      },
+      "5": {
+        "slotLevel": 5,
+        "maxSlots": 0,
+        "spentSlots": 0
+      },
+      "7": {
+        "slotLevel": 7,
+        "maxSlots": 4,
+        "spentSlots": 2
+      }
+    },
     "spellList": [
       {
         spellLevel: 0,

@@ -5,6 +5,7 @@ type RadioToggleProps = {
     value?: boolean
     emphasis?: boolean
     useEmphasis?: boolean
+    fontSize?: string
     onUpdate?: (profBool: boolean, expertBool?: boolean) => void
 }
 
@@ -12,6 +13,7 @@ const RadioToggle: React.FC<RadioToggleProps> = ({
     value = false,
     emphasis = false,
     useEmphasis = false,
+    fontSize = '2em',
     onUpdate
 }) => {
     const handleClick = () => {
@@ -38,7 +40,7 @@ const RadioToggle: React.FC<RadioToggleProps> = ({
     }
 
     return (
-        <span className="radio-toggle" onClick={handleClick}>
+        <span className="radio-toggle" style={{ fontSize: fontSize || '2em' }} onClick={handleClick}>
             {symbol}
         </span>
     )

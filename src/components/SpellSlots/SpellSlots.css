@@ -1,0 +1,73 @@
+.spell-slots-grid {
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: column;
+    background-color: rgb(198, 153, 49);
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+}
+
+.spell-slots-entry {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.spell-slot-label {
+    width: 8em;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.spell-slots-max {
+    width: 4em;
+    font-size: 0.75em;
+}
+
+.spell-slots-spent {
+    width: 4em;
+    font-size: 0.75em;
+}
+
+.spell-slot-tracker-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* padding: 0.5em; */
+}
+
+.spell-slot-toggle-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+}
+
+.spell-slots-spent-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.spell-slot-placeholder {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spell-slot-empty-tracker-placeholder {
+    visibility: hidden;
+    width: 100%;
+    height: 1.5em;
+}

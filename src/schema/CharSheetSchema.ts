@@ -49,6 +49,12 @@ export const SpellLineSchema = z.object({
     notes: z.string().optional()
 })
 
+export const SpellSlotsSchema = z.object({
+    slotLevel: zFlexibleNumber().optional(),
+    maxSlots: zFlexibleNumber().optional(),
+    spentSlots: zFlexibleNumber().optional(),
+})
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -72,7 +78,12 @@ export const CharSheetSchema = z.object({
     speed: zFlexibleNumber().optional(),
     size: z.string().optional(),
     passivePerception: zFlexibleNumber().optional(),
+    spellAbility: z.string().optional(),
+    spellMod: zFlexibleNumber().optional(),
+    spellSaveDc: zFlexibleNumber().optional(),
+    spellAtkBonus: zFlexibleNumber().optional(),
     stats: z.record(StatTypesUnion, StatSchema).optional(),
     weaponsAndDamage: z.array(DamageLineSchema).optional(),
-    spellList: z.array(SpellLineSchema).optional()
+    spellList: z.array(SpellLineSchema).optional(),
+    spellSlots: z.record(z.number(), SpellSlotsSchema).optional(),
 })
