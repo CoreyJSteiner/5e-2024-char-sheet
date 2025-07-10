@@ -55,6 +55,14 @@ export const SpellSlotsSchema = z.object({
     spentSlots: zFlexibleNumber().optional(),
 })
 
+export const CoinSchema = z.object({
+    cp: zFlexibleNumber().optional(),
+    sp: zFlexibleNumber().optional(),
+    gp: zFlexibleNumber().optional(),
+    ep: zFlexibleNumber().optional(),
+    pp: zFlexibleNumber().optional(),
+})
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -86,4 +94,5 @@ export const CharSheetSchema = z.object({
     weaponsAndDamage: z.array(DamageLineSchema).optional(),
     spellList: z.array(SpellLineSchema).optional(),
     spellSlots: z.record(z.number(), SpellSlotsSchema).optional(),
+    coin: CoinSchema.optional(),
 })

@@ -1,0 +1,33 @@
+.coin-section-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0.25em 0.5em;
+    border: none;
+    gap: 0.5em;
+    font-size: 0.8em;
+}
+
+/* 
+.coin-section-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    background: orange;
+    width: 90%;
+    height: 80%;
+    font-size: 0.5em;
+    flex: 1 1 0%;
+    min-width: 0;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+} */

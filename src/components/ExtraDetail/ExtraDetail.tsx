@@ -1,4 +1,4 @@
-import SingleStat from '../SingleStat'
+import TopStat from '../TopStat'
 import './ExtraDetail.css'
 
 type ExtraDetailProps = {
@@ -8,10 +8,10 @@ type ExtraDetailProps = {
 const ExtraDetail: React.FC<ExtraDetailProps> = ({ id }) => {
     return (
         <div id={id} className='extra-detail-container'>
-            <SingleStat fieldName='initiative' className='extra-detail-main' inputMode='numeric' />
-            <SingleStat fieldName='speed' className='extra-detail-main' inputMode='numeric' />
-            <SingleStat fieldName='size' className='extra-detail-main' inputMode='text' />
-            <SingleStat fieldName='passivePerception' className='extra-detail-main' inputMode='numeric' />
+            <TopStat fieldName='initiative' className='extra-detail-main' inputMode='numeric' />
+            <TopStat fieldName='speed' className='extra-detail-main' inputMode='numeric' />
+            <TopStat fieldName='size' className='extra-detail-main' inputMode='text' />
+            <TopStat fieldName='passivePerception' className='extra-detail-main' inputMode='numeric' />
         </div>
     )
 }

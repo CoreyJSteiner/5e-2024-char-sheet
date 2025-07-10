@@ -1,3 +1,4 @@
+import CoinSection from '../CoinSection'
 import SpellcastingAbility from '../SpellcastingAbility/SpellcastingAbility'
 import SpellList from '../SpellList/SpellList'
 import SpellSlots from '../SpellSlots'
@@ -16,7 +17,8 @@ const TabSpells: React.FC = () => {
             <div id='story' className='item'>story</div>
             <div id='lang' className='item'>lang</div>
             <div id='gear' className='item'>gear</div>
-            <div id='coin' className='item'>coin</div>
+            <CoinSection id='coin' className='item' />
+            {/* <div id='coin' className='item'>coin</div> */}
         </div >
     )
 }
