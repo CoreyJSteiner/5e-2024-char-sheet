@@ -1,0 +1,47 @@
+.equipment-prof-container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+
+.equipment-prof-armor-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.equipment-prof-armor-item {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+}
+
+.equipment-prof-weapons-section,
+.equipment-prof-tools-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+}
+
+.equipment-prof-label {
+    position: absolute;
+    top: 0;
+    left: 0.25em;
+    color: white;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+.equipment-prof-text {
+    box-sizing: border-box;
+    padding: 1.5em 0.35em 0;
+}

@@ -93,6 +93,6 @@ export const CharSheetSchema = z.object({
     stats: z.record(StatTypesUnion, StatSchema).optional(),
     weaponsAndDamage: z.array(DamageLineSchema).optional(),
     spellList: z.array(SpellLineSchema).optional(),
-    spellSlots: z.record(z.number(), SpellSlotsSchema).optional(),
+    spellSlots: z.record(zFlexibleNumber(), SpellSlotsSchema).optional(),
     coin: CoinSchema.optional(),
 })
