@@ -70,6 +70,22 @@ export const ArmorProfSchema = z.object({
     shields: z.boolean().optional(),
 })
 
+export const RestTypesUnion = z.union([
+    z.literal("LR"),
+    z.literal("SR"),
+])
+
+export const FeatureSchema = z.object({
+    title: z.string().optional(),
+    heading: z.string().optional(),
+    body: z.string().optional(),
+    // features: z.array(FeatureSchema).optional(),
+    reset: RestTypesUnion.optional(),
+    maxUses: zFlexibleNumber().optional(),
+    currentUses: zFlexibleNumber().optional(),
+})
+
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -109,4 +125,7 @@ export const CharSheetSchema = z.object({
     backstoryPersonality: z.string().optional(),
     languages: z.string().optional(),
     equipment: z.string().optional(),
+    classFeatures: z.array(FeatureSchema).optional(),
+    speciesFeatures: z.array(FeatureSchema).optional(),
+    featFeatures: z.array(FeatureSchema).optional(),
 })
