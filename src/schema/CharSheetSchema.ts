@@ -105,4 +105,8 @@ export const CharSheetSchema = z.object({
     armorProf: ArmorProfSchema.optional(),
     weaponProf: z.string().optional(),
     toolProf: z.string().optional(),
+    appearance: z.string().optional(),
+    backstoryPersonality: z.string().optional(),
+    languages: z.string().optional(),
+    equipment: z.string().optional(),
 })

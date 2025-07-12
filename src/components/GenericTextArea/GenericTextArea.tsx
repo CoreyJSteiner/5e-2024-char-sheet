@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import './GenericTextArea.css'
 
 type GenericTextAreaProps = {
+    id?: string
     className?: string
     propTextValue?: string
     onUpdate?: (text: string) => void
 }
 
 const GenericTextArea: React.FC<GenericTextAreaProps> = ({
+    id = '',
     className = '',
     propTextValue = '',
     onUpdate,
@@ -39,6 +41,7 @@ const GenericTextArea: React.FC<GenericTextAreaProps> = ({
     return (
         <>
             <textarea
+                id={id}
                 className={`generic-text-area ${className} ${isEditing ? ' generic-text-area-editable' : ''}`}
                 value={textValue}
                 onChange={updateTextVal}
