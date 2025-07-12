@@ -15,7 +15,7 @@ const FeatureColumn: React.FC<FeatureColumnProps> = ({ id, className, featureTyp
             {(featureType && charSheet[featureType]) && (
                 charSheet[featureType].map(feature => {
                     return (
-                        <FeatureEntry body={feature.body} />
+                        <FeatureEntry feature={feature} />
                     )
                 })
             )}
