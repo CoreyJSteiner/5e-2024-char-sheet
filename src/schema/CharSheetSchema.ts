@@ -63,6 +63,13 @@ export const CoinSchema = z.object({
     pp: zFlexibleNumber().optional(),
 })
 
+export const ArmorProfSchema = z.object({
+    light: z.boolean().optional(),
+    medium: z.boolean().optional(),
+    heavy: z.boolean().optional(),
+    shields: z.boolean().optional(),
+})
+
 export const CharSheetSchema = z.object({
     name: z.string().optional(),
     background: z.string().optional(),
@@ -95,4 +102,7 @@ export const CharSheetSchema = z.object({
     spellList: z.array(SpellLineSchema).optional(),
     spellSlots: z.record(zFlexibleNumber(), SpellSlotsSchema).optional(),
     coin: CoinSchema.optional(),
+    armorProf: ArmorProfSchema.optional(),
+    weaponProf: z.string().optional(),
+    toolProf: z.string().optional(),
 })

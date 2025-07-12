@@ -8,22 +8,54 @@
 }
 
 .equipment-prof-armor-section {
+    box-sizing: border-box;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid black;
+}
+
+.equipment-prof-armor-buttons-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
     padding: 0;
     margin: 0;
 }
 
+.equipment-prof-armor-section-label {
+    font-weight: bold;
+    padding: 0 0.25em 0;
+    margin: 0;
+    text-align: left;
+}
+
 .equipment-prof-armor-item {
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 0;
     margin: 0;
+}
+
+.equipment-prof-armor-label {
+    margin: 0 0.25em;
+    padding: 0;
+    font-weight: 600;
+    font-size: 0.90em;
 }
 
 .equipment-prof-weapons-section,
 .equipment-prof-tools-section {
+    box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -31,11 +63,14 @@
     margin: 0;
 }
 
+.equipment-prof-weapons-section {
+    border-bottom: 1px solid black;
+}
+
 .equipment-prof-label {
     position: absolute;
     top: 0;
     left: 0.25em;
-    color: white;
     font-weight: bold;
     padding: 0;
     margin: 0;
@@ -44,4 +79,5 @@
 .equipment-prof-text {
     box-sizing: border-box;
     padding: 1.5em 0.35em 0;
+    color: black;
 }
