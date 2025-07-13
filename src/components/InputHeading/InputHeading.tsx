@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import './InputHeading.css'
 
 type InputHeadingProps = {
@@ -6,6 +6,7 @@ type InputHeadingProps = {
     propTextValue?: string | number
     headingSize?: string
     inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']
+    inheritedEditState?: 'edit' | 'display'
     onUpdate?: (newValue: string) => void
 }
 
@@ -14,54 +15,83 @@ const InputHeading: React.FC<InputHeadingProps> = ({
     propTextValue,
     headingSize,
     inputMode,
-    onUpdate
+    inheritedEditState,
+    onUpdate,
 }) => {
-    const [textValue, setTextValue] = useState<string>('')
-    const [isEditing, setIsEditing] = useState<boolean>(false)
+    const isControlledExternally = inheritedEditState !== undefined
+    const [internalEditMode, setInternalEditMode] = useState(false)
+    const isEditing = isControlledExternally ? inheritedEditState === 'edit' : internalEditMode
+
+    const [textValue, setTextValue] = useState(propTextValue?.toString() || '')
+
+    const prevInheritedEditState = useRef<'edit' | 'display' | undefined>(inheritedEditState)
 
     useEffect(() => {
-        setTextValue(prevVal => propTextValue || propTextValue === 0 ? propTextValue.toString() : prevVal)
+        setTextValue(propTextValue?.toString() ?? '')
     }, [propTextValue])
 
-    const toggleEditHandler = () => {
-        if (isEditing && onUpdate) {
-            onUpdate(textValue)
+    useEffect(() => {
+        if (!inheritedEditState) return
+        if (
+            prevInheritedEditState.current === 'edit' &&
+            inheritedEditState === 'display'
+        ) {
+            if (onUpdate) onUpdate(textValue)
         }
-        setIsEditing(prevVal => !prevVal)
+        prevInheritedEditState.current = inheritedEditState
+    }, [inheritedEditState, textValue, onUpdate])
+
+    useEffect(() => {
+        return () => {
+            if (isEditing && onUpdate) {
+                onUpdate(textValue)
+            }
+        }
+    }, [isEditing, textValue, onUpdate])
+
+    const commitUpdate = () => {
+        if (onUpdate) onUpdate(textValue)
     }
 
-    const updateTextVal = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTextValue(e.target.value)
+    // const handleBlur = () => {
+    //     if (!isControlledExternally) {
+    //         setInternalEditMode(false)
+    //     }
+    //     commitUpdate()
+    // }
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code === 'Enter') {
+            commitUpdate()
+            if (!isControlledExternally) setInternalEditMode(false)
+        }
     }
 
-    const keyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.repeat) return
-
-        if (e.code === 'Enter') toggleEditHandler()
+    const handleClick = () => {
+        if (!isControlledExternally) setInternalEditMode(true)
     }
 
     return (
-        <div className={
-            `input-heading-display-container
-             
-             ${className}`}
-        >
-            <div className={`input-heading-size input-heading-size-${headingSize ? headingSize : 'h1'}`}>
-                <input className={`input-heading-display ${isEditing ? ' input-heading-editable' : ''}`}
-                    type='text'
-                    onChange={updateTextVal}
-                    onClick={() => !isEditing ? toggleEditHandler() : null}
-                    onKeyDown={keyDownHandler}
+        <div className={`input-heading-display-container ${className ?? ''}`}>
+            <div className={`input-heading-size input-heading-size-${headingSize ?? 'h1'}`}>
+                <input
+                    className={`input-heading-display${isEditing ? ' input-heading-editable' : ''}`}
+                    type="text"
+                    inputMode={inputMode ?? 'text'}
+                    spellCheck={false}
                     value={textValue}
                     readOnly={!isEditing}
-                    spellCheck='false'
-                    inputMode={inputMode ? inputMode : 'text'}
+                    onClick={handleClick}
+                    onChange={(e) => setTextValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                // onBlur={handleBlur}
                 />
-                {isEditing && (
-                    <button className='input-heading-edit-button' onClick={toggleEditHandler}>✅</button>
+                {isEditing && !isControlledExternally && (
+                    <button className="input-heading-edit-button" onClick={commitUpdate}>✅</button>
                 )}
             </div>
-        </div >
+        </div>
     )
 }
+
 export default InputHeading
