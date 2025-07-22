@@ -124,7 +124,7 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
 
             <GenericTextArea
                 propTextValue={body}
-                hide={isEditing || body ? false : true}
+                inheritedEditState={isEditing ? 'edit' : 'display'}
                 onUpdate={updateFeatureField('body')}
             />
 
