@@ -1,5 +1,4 @@
 .coin-section-container {
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -12,22 +11,3 @@
     gap: 0.5em;
     font-size: 0.8em;
 }
-
-/* 
-.coin-section-main {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid black;
-    background: orange;
-    width: 90%;
-    height: 80%;
-    font-size: 0.5em;
-    flex: 1 1 0%;
-    min-width: 0;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-} */

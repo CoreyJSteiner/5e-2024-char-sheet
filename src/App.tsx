@@ -620,7 +620,6 @@ function App() {
   const updateCharSheet = (updates: Partial<CharSheet>) => {
     setCharSheet(prev => ({ ...prev, ...updates }))
     console.log('--update--')
-
     console.dir(charSheet)
   }
 

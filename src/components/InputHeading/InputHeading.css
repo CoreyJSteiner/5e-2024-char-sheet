@@ -1,5 +1,4 @@
 .input-heading-display-container {
-    box-sizing: border-box;
     position: relative;
     background: red;
     width: 100%;
@@ -8,7 +7,6 @@
 
 .input-heading-display {
     all: unset;
-    box-sizing: border-box;
     background-color: blueviolet;
     width: 100%;
     height: 100%;

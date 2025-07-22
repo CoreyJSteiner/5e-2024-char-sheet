@@ -14,3 +14,4 @@ export type ArmorProf = z.infer<typeof ArmorProfSchema>
 export type ArmorProfType = keyof ArmorProf
 export type RestTypes = z.infer<typeof RestTypesUnion>
 export type Feature = z.infer<typeof FeatureSchema>
+export type FeatureField = keyof Feature

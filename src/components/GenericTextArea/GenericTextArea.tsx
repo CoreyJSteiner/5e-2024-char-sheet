@@ -4,6 +4,7 @@ import './GenericTextArea.css'
 type GenericTextAreaProps = {
     id?: string
     className?: string
+    hide?: boolean
     propTextValue?: string
     onUpdate?: (text: string) => void
 }
@@ -11,6 +12,7 @@ type GenericTextAreaProps = {
 const GenericTextArea: React.FC<GenericTextAreaProps> = ({
     id = '',
     className = '',
+    hide = false,
     propTextValue = '',
     onUpdate,
 }) => {
@@ -38,11 +40,14 @@ const GenericTextArea: React.FC<GenericTextAreaProps> = ({
         if (e.code === 'Enter') toggleEditHandler()
     }
 
+    const hideDisplay = hide ? { display: "none" } : {}
+
     return (
         <>
             <textarea
                 id={id}
                 className={`generic-text-area ${className} ${isEditing ? ' generic-text-area-editable' : ''}`}
+                style={hideDisplay}
                 value={textValue}
                 onChange={updateTextVal}
                 onClick={() => !isEditing ? toggleEditHandler() : null}

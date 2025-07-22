@@ -1,5 +1,4 @@
 .spell-slots-grid {
-    box-sizing: border-box;
     display: grid;
     grid-auto-flow: column;
     background-color: rgb(198, 153, 49);
@@ -11,7 +10,6 @@
 }
 
 .spell-slots-entry {
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -36,14 +34,12 @@
 }
 
 .spell-slot-tracker-container {
-    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 100%;
-    /* padding: 0.5em; */
 }
 
 .spell-slot-toggle-wrapper {

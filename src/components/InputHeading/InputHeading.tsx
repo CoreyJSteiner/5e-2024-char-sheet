@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from 'react'
 import './InputHeading.css'
 
 type InputHeadingProps = {
     className?: string
+    hide?: boolean
     propTextValue?: string | number
     headingSize?: string
     inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode']
@@ -12,34 +13,26 @@ type InputHeadingProps = {
 
 const InputHeading: React.FC<InputHeadingProps> = ({
     className,
+    hide = false,
     propTextValue,
-    headingSize,
-    inputMode,
+    headingSize = 'h1',
+    inputMode = 'text',
     inheritedEditState,
     onUpdate,
 }) => {
     const isControlledExternally = inheritedEditState !== undefined
     const [internalEditMode, setInternalEditMode] = useState(false)
-    const isEditing = isControlledExternally ? inheritedEditState === 'edit' : internalEditMode
+    const isEditing = isControlledExternally
+        ? inheritedEditState === 'edit'
+        : internalEditMode
 
-    const [textValue, setTextValue] = useState(propTextValue?.toString() || '')
-
-    const prevInheritedEditState = useRef<'edit' | 'display' | undefined>(inheritedEditState)
-
-    useEffect(() => {
-        setTextValue(propTextValue?.toString() ?? '')
-    }, [propTextValue])
+    const [textValue, setTextValue] = useState(propTextValue?.toString() ?? '')
 
     useEffect(() => {
-        if (!inheritedEditState) return
-        if (
-            prevInheritedEditState.current === 'edit' &&
-            inheritedEditState === 'display'
-        ) {
-            if (onUpdate) onUpdate(textValue)
+        if (!isEditing) {
+            setTextValue(propTextValue?.toString() ?? '')
         }
-        prevInheritedEditState.current = inheritedEditState
-    }, [inheritedEditState, textValue, onUpdate])
+    }, [propTextValue, isEditing])
 
     useEffect(() => {
         return () => {
@@ -47,47 +40,47 @@ const InputHeading: React.FC<InputHeadingProps> = ({
                 onUpdate(textValue)
             }
         }
-    }, [isEditing, textValue, onUpdate])
+    }, [isEditing, onUpdate, textValue])
 
     const commitUpdate = () => {
         if (onUpdate) onUpdate(textValue)
     }
 
-    // const handleBlur = () => {
-    //     if (!isControlledExternally) {
-    //         setInternalEditMode(false)
-    //     }
-    //     commitUpdate()
-    // }
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.code === 'Enter') {
+    const toggleInternalEdit = () => {
+        if (isEditing) {
             commitUpdate()
-            if (!isControlledExternally) setInternalEditMode(false)
         }
+        setInternalEditMode(!internalEditMode)
     }
 
-    const handleClick = () => {
-        if (!isControlledExternally) setInternalEditMode(true)
-    }
+    const hideDisplay = hide ? { display: "none" } : {}
 
     return (
-        <div className={`input-heading-display-container ${className ?? ''}`}>
-            <div className={`input-heading-size input-heading-size-${headingSize ?? 'h1'}`}>
+        <div className={`input-heading-display-container ${className ?? ''}`} style={hideDisplay}>
+            <div className={`input-heading-size input-heading-size-${headingSize}`}>
                 <input
                     className={`input-heading-display${isEditing ? ' input-heading-editable' : ''}`}
                     type="text"
-                    inputMode={inputMode ?? 'text'}
-                    spellCheck={false}
                     value={textValue}
-                    readOnly={!isEditing}
-                    onClick={handleClick}
                     onChange={(e) => setTextValue(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                // onBlur={handleBlur}
+                    inputMode={inputMode}
+                    readOnly={!isEditing}
+                    spellCheck={false}
+                    onClick={() => {
+                        if (!isControlledExternally && !isEditing) {
+                            setInternalEditMode(true)
+                        }
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.code === 'Enter' && !isControlledExternally) {
+                            toggleInternalEdit()
+                        }
+                    }}
                 />
-                {isEditing && !isControlledExternally && (
-                    <button className="input-heading-edit-button" onClick={commitUpdate}>✅</button>
+                {!isControlledExternally && isEditing && (
+                    <button className="input-heading-edit-button" onClick={toggleInternalEdit}>
+                        ✅
+                    </button>
                 )}
             </div>
         </div>
