@@ -1,0 +1,60 @@
+.feature-entry-container {
+    position: relative;
+    height: auto;
+}
+
+.feature-entry-edit-button {
+    position: absolute;
+    top: 0;
+    right: 0.5em;
+    z-index: 1;
+}
+
+.feature-entry-top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.feature-entry-header {
+    width: 70;
+}
+
+.feature-uses-reset-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30%;
+}
+
+.feature-entry-reset {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 55%;
+}
+
+.feature-uses-spent-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.feature-uses-entry {
+    width: 45%;
+}
+
+.feature-uses-tracker-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.feature-entry-body {
+    height: auto;
+    overflow: hidden;
+    resize: none;
+}

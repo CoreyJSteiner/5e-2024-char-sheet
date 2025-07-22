@@ -53,7 +53,11 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
         return Array.from({ length: 4 }).map((_, idx) => {
             const isHidden = idx >= maxUses
             return (
-                <div key={idx} className="feature-uses-toggle-wrapper" style={showToggles ? {} : { display: "none" }}>
+                <div
+                    key={idx}
+                    className="feature-uses-toggle-wrapper"
+                    style={showToggles && !isEditing ? {} : { display: "none" }}
+                >
                     <RadioToggle
                         value={idx < currentUses}
                         hide={isHidden}
@@ -100,27 +104,11 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
     }
 
     return (
-        <div className={`feature-entry-container ${className}`}>
-            <button style={{ padding: '1em', backgroundColor: 'red' }} onClick={() => setIsEditing(prev => !prev)}></button>
-            <div className="feature-uses-entry" key={crypto.randomUUID()}>
-                <div className="feature-uses-tracker-container">
-                    {radioDisplay()}
-                    {inputDisplay()}
-                </div>
-            </div>
-            {/* {(reset || isEditing) && ( */}
-            <p style={selectDisplayStyle()}>{reset}</p>
-            <select
-                value={reset}
-                onChange={(e) => updateFeatureField('reset')(e.target.value)}
-                style={selectEditStyle()}
-            >
-                <option value={''}></option>
-                <option value={'LR'}>Long Rest</option>
-                <option value={'SR'}>Short Rest</option>
-            </select>
+        <div className={`feature-entry-container${className ? ' ' + className : ''}`}>
+            <button className='feature-entry-edit-button' onClick={() => setIsEditing(prev => !prev)}>
+                <span className="material-symbols-outlined">edit_note</span>
+            </button>
 
-            {/* )} */}
             <InputHeading
                 propTextValue={title}
                 hide={isEditing || title ? false : true}
@@ -129,19 +117,46 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
                 inheritedEditState={isEditing ? 'edit' : 'display'}
                 onUpdate={updateFeatureField('title')}
             />
+            <div className='feature-entry-top-row'>
+                <InputHeading
+                    className='feature-entry-header'
+                    propTextValue={heading}
+                    hide={isEditing || heading ? false : true}
+                    headingSize='h3'
+                    inputMode='text'
+                    inheritedEditState={isEditing ? 'edit' : 'display'}
+                    onUpdate={updateFeatureField('heading')}
+                />
 
-            <InputHeading
-                propTextValue={heading}
-                hide={isEditing || heading ? false : true}
-                headingSize='h3'
-                inputMode='text'
-                inheritedEditState={isEditing ? 'edit' : 'display'}
-                onUpdate={updateFeatureField('heading')}
-            />
+                <div className="feature-uses-reset-container">
+                    <div className="feature-uses-entry" key={crypto.randomUUID()}>
+                        <div className="feature-uses-tracker-container">
+                            {radioDisplay()}
+                            {inputDisplay()}
+                        </div>
+                    </div>
+                    <div className='feature-entry-reset'>
+                        <p style={selectDisplayStyle()}>
+                            {reset === 'LR' ? 'Long Rest' : reset === 'SR' ? 'Short Rest' : ''}
+                        </p>
+                        <select
+                            value={reset}
+                            onChange={(e) => updateFeatureField('reset')(e.target.value)}
+                            style={selectEditStyle()}
+                        >
+                            <option value={''}></option>
+                            <option value={'LR'}>Long Rest</option>
+                            <option value={'SR'}>Short Rest</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
             <GenericTextArea
+                className='feature-entry-body'
                 propTextValue={body}
                 inheritedEditState={isEditing ? 'edit' : 'display'}
+                autoResize={true}
                 onUpdate={updateFeatureField('body')}
             />
 

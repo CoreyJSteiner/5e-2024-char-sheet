@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './GenericTextArea.css'
 
 type GenericTextAreaProps = {
@@ -7,6 +7,7 @@ type GenericTextAreaProps = {
     hide?: boolean
     propTextValue?: string
     inheritedEditState?: 'edit' | 'display'
+    autoResize?: boolean
     onUpdate?: (text: string) => void
 }
 
@@ -16,6 +17,7 @@ const GenericTextArea: React.FC<GenericTextAreaProps> = ({
     hide = false,
     propTextValue = '',
     inheritedEditState,
+    autoResize,
     onUpdate,
 }) => {
     const isControlledExternally = inheritedEditState !== undefined
@@ -24,28 +26,34 @@ const GenericTextArea: React.FC<GenericTextAreaProps> = ({
         ? inheritedEditState === 'edit'
         : internalEditMode
     const [textValue, setTextValue] = useState<string>('')
-    // const [isEditing, setIsEditing] = useState<boolean>(false)
+    const textareaRef = React.useRef<HTMLTextAreaElement>(null)
+    const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+    useEffect(() => {
+        if (autoResize && textareaRef.current) {
+            textareaRef.current.style.height = 'auto'
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+        }
+    }, [textValue, autoResize])
 
     useEffect(() => {
         setTextValue(prevVal => propTextValue ? propTextValue : prevVal)
     }, [propTextValue])
 
-    // const toggleEditHandler = () => {
-    //     if (isEditing && onUpdate) {
-    //         onUpdate(textValue)
-    //     }
-    //     setIsEditing(prevVal => !prevVal)
-    // }
-
     const updateTextVal = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setTextValue(e.target.value)
+        const value = e.target.value
+        setTextValue(value)
+
+        if (onUpdate) {
+            if (debounceTimer.current) {
+                clearTimeout(debounceTimer.current)
+            }
+
+            debounceTimer.current = setTimeout(() => {
+                onUpdate(value)
+            }, 300)
+        }
     }
-
-    // const keyDownHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    //     if (e.repeat) return
-
-    //     if (e.code === 'Enter') toggleEditHandler()
-    // }
 
     const commitUpdate = () => {
         if (onUpdate) onUpdate(textValue)
@@ -64,12 +72,11 @@ const GenericTextArea: React.FC<GenericTextAreaProps> = ({
         <>
             <textarea
                 id={id}
+                ref={textareaRef}
                 className={`generic-text-area ${className} ${isEditing ? ' generic-text-area-editable' : ''}`}
                 style={hideDisplay}
                 value={textValue}
                 onChange={updateTextVal}
-                // onClick={() => !isEditing ? toggleEditHandler() : null}
-                // onKeyDown={keyDownHandler}
                 onClick={() => {
                     if (!isControlledExternally && !isEditing) {
                         setInternalEditMode(true)
