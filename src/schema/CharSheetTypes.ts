@@ -1,5 +1,5 @@
-import type z from "zod";
-import type { CharSheetSchema, StatTypesUnion, StatSchema, SkillSchema, DamageLineSchema, SpellLineSchema, CoinSchema, ArmorProfSchema, RestTypesUnion, FeatureSchema } from "./CharSheetSchema";
+import type z from "zod"
+import type { CharSheetSchema, StatTypesUnion, StatSchema, SkillSchema, DamageLineSchema, SpellLineSchema, CoinSchema, ArmorProfSchema, RestTypesUnion, FeatureSchema } from "./CharSheetSchema"
 
 export type CharSheet = z.infer<typeof CharSheetSchema>
 export type CharSheetKey = keyof CharSheet

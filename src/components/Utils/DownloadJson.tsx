@@ -4,7 +4,7 @@ import { saveAs } from 'file-saver'
 type DownloadJsonOptions = {
     fileName: string
     prettify?: boolean
-};
+}
 
 export const useDownloadJson = () => {
     const downloadJson = useCallback(
@@ -19,7 +19,7 @@ export const useDownloadJson = () => {
             saveAs(blob, saveName + '.json')
         },
         []
-    );
+    )
 
     return downloadJson
 }
