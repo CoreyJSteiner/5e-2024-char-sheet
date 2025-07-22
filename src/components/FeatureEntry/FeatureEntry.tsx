@@ -91,6 +91,14 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
         )
     }
 
+    const selectDisplayStyle = () => {
+        return !isEditing && reset ? {} : { display: "none" }
+    }
+
+    const selectEditStyle = () => {
+        return isEditing ? {} : { display: "none" }
+    }
+
     return (
         <div className={`feature-entry-container ${className}`}>
             <button style={{ padding: '1em', backgroundColor: 'red' }} onClick={() => setIsEditing(prev => !prev)}></button>
@@ -100,10 +108,19 @@ const FeatureEntry: React.FC<FeatureEntryProps> = ({ className, feature, onUpdat
                     {inputDisplay()}
                 </div>
             </div>
-            {(reset || isEditing) && (
-                <p>{reset === 'LR' ? 'Long Rest' : 'Short Rest'}</p>
-                //picklist
-            )}
+            {/* {(reset || isEditing) && ( */}
+            <p style={selectDisplayStyle()}>{reset}</p>
+            <select
+                value={reset}
+                onChange={(e) => updateFeatureField('reset')(e.target.value)}
+                style={selectEditStyle()}
+            >
+                <option value={''}></option>
+                <option value={'LR'}>Long Rest</option>
+                <option value={'SR'}>Short Rest</option>
+            </select>
+
+            {/* )} */}
             <InputHeading
                 propTextValue={title}
                 hide={isEditing || title ? false : true}
